@@ -1,0 +1,104 @@
+this is wiki file will be the guide to nvim configuration created by ayman
+mezghani
+
+:set number
+:set relativenumber
+:set mouse=a 
+:set autoindent
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+to this point you dont need any special command in terminal ..
+
+to be able to use the command PlugInstall in the command bar you have to install curl if you didint installet yet it is good to check it out if it is already installed sudo apt install curl if yes you can run this command
+
+$~ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
+
+all the plugins are token from git so we have to install git if it is not already installed sudo apt install git
+
+so now you have the function PlugInstall to install the plugins
+nice ! so those are the basic plugins really handfull!
+!!!! the line with * are line with special preparation to be installed !!!!!
+
+call plug#begin()
+
+	Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+	Plug 'https://github.com/preservim/nerdtree' " NerdTree
+	Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+	Plug 'https://github.com/ryanoasis/vim-devicons' " *Developer Icons
+	Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+	Plug 'https://github.com/preservim/tagbar' " *Tagbar for code navigation
+	Plug 'https://github.com/neoclide/coc.nvim'  " *Auto Completion
+"	Plug 'nanotech/jellybeans.vim' " jellybeans
+	Plug 'https://github.com/joshdick/onedark.vim' " onedark
+
+	set encoding=UTF-8
+call plug#end()
+":colorscheme jellybeans
+:colorscheme onedark
+nnoremap <C-f> :NERDTreeFocus<CR>
+
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+we gonna break down this prepatration step by step 
+*Tagbar
+we have to install exuberant-ctag
+*developer icons
+Visit the Nerd Fonts Website: Go to the Nerd Fonts website.
+
+Choose and Download a Font: Select a font you like (such as FiraCode, Hack, or Source Code Pro). Make sure you download the "Nerd Font Complete" version of the font file.
+
+Unzip the font files into your ~/.local/share/fonts/ directory (create it if it doesn't exist).
+Run fc-cache -fv to rebuild the font cache.
+Open the settings of your terminal emulator and confirm that the Nerd Font is selected as the default font.
+
+*auto completion
+für c++ and python there is bunch of command to run to ensure a working autocompletion of cocvim 
+sudo apt install npm
+sudo apt install nodejs
+cd ~/.local/share/nvim/plugged/coc.nvim
+npm ci 
+this command will install all the dependencies specified in the package-local.json file and compile coc.vim
+
+If you haven't installed NVM yet, you can install it with this command:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+npm install pyright
+sudo apt install clangd
+In Neovim, open the coc.nvim configuration file by typing: :CocConfig
+and type this jason souce file
+
+{
+  "languageserver": {
+    "python": {
+      "command": "pyright-langserver",
+      "args": ["--stdio"],
+      "filetypes": ["python"],
+      "settings": {
+        "python": {
+          "analysis": {
+            "typeCheckingMode": "off"
+			"autoSearchPaths": true,
+            "diagnosticMode": "workspace",
+            "useLibraryCodeForTypes": true          }
+        }
+      }
+    },
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_commands.json", "compile_flags.txt", ".git/", ".hg/"],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+	  "trace.server": "verbose",
+      "debounceTextChanges": 150,
+      "settings": {
+        "clangd": {
+          "args": [],
+          "clangdExecutable": "clangd"
+        }
+      }
+    }
+  }
+}
+thaaaaaaaaaaaaaaaaat's it you did it finally you have a handfull text editor 
