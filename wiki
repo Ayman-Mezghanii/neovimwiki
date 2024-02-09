@@ -67,6 +67,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 npm install pyright
 sudo apt install clangd
+npm install -g typescript for node.js
+npm install -g vscode-html-languageserver-bin vscode-css-languageserver-bin
+
 In Neovim, open the coc.nvim configuration file by typing: :CocConfig
 and type this jason souce file
 
@@ -97,6 +100,31 @@ and type this jason souce file
           "args": [],
           "clangdExecutable": "clangd"
         }
+      }
+    },
+  "languageserver": {
+    "tsserver": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
+    }
+},
+    "html": {
+      "command": "html-languageserver",
+      "args": ["--stdio"]
+    },
+    "css": {
+      "command": "css-languageserver",
+      "args": ["--stdio"]
+    },
+    "eslint": {
+      "command": "eslint",
+      "args": ["--stdin", "--stdin-filename", "%filepath", "--format", "json"],
+      "rootPatterns": ["package.json"],
+      "filetypes": ["javascript", "javascriptreact"],
+      "alwaysShowStatus": true,
+      "initializationOptions": {
+        "configFile": "./.eslintrc.json"
       }
     }
   }
