@@ -69,6 +69,7 @@ npm install pyright
 sudo apt install clangd
 npm install -g typescript for node.js
 npm install -g vscode-html-languageserver-bin vscode-css-languageserver-bin
+npm install -g eslint
 
 In Neovim, open the coc.nvim configuration file by typing: :CocConfig
 and type this jason souce file
