@@ -33,6 +33,17 @@ call plug#begin()
 	Plug 'https://github.com/neoclide/coc.nvim'  " *Auto Completion
 "	Plug 'nanotech/jellybeans.vim' " jellybeans
 	Plug 'https://github.com/joshdick/onedark.vim' " onedark
+	" coc-eslint
+	Plug 'neoclide/coc-eslint', {'do': 'npm  install'}
+
+	" coc-prettier
+	Plug 'neoclide/coc-prettier', {'do': 'npm  install'}
+	
+	" coc-json
+	Plug 'neoclide/coc-json', {'do': 'npm  install'}
+
+	" coc-markdownlint
+	Plug 'fannheyward/coc-markdownlint', {'do': 'npm  install'}
 
 	set encoding=UTF-8
 call plug#end()
