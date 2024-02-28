@@ -124,10 +124,12 @@ and type this jason souce file
     "html": {
       "command": "html-languageserver",
       "args": ["--stdio"]
+      "filetypes":["html"]
     },
     "css": {
       "command": "css-languageserver",
       "args": ["--stdio"]
+      "filetypes":["css"]
     },
     "eslint": {
       "command": "eslint",
